@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "author": "Gerard Ramon Monte",
+  "license": "MIT",
+  "description": "A customizable React component library based on shadcn",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
