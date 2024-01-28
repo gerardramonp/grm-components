@@ -9,6 +9,9 @@
   "author": "Gerard Ramon Monte",
   "license": "MIT",
   "description": "A customizable React component library based on shadcn",
+  "main": "dist/grm-ui.umd.js",
+  "module": "dist/grm-ui.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
