@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { Button } from "./button";
+import { ThemeProvider } from "@/providers/ThemeProvider/ThemeProvider";
 
 const meta = {
   title: "Example/Button",
@@ -38,7 +39,11 @@ const meta = {
 
 export default meta;
 
-const Template: StoryFn = (args) => <Button {...args}>asdasd</Button>;
+const Template: StoryFn = (args) => (
+  <ThemeProvider theme="light">
+    <Button {...args}>asdasd</Button>
+  </ThemeProvider>
+);
 
 const ListTemplate: StoryFn = ({ items, ...args }) =>
   items.map((item: any, index: number) => {
