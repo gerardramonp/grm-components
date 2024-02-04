@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { ThemeContext } from "./useTheme";
 import { Theme, ThemePreset } from "@/types/themeTypes";
 
@@ -15,24 +15,14 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
 }) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(theme);
 
-  useEffect(() => {
-    // Dynamically import CSS file based on the current theme
-    import(`../../themes/${preset}.css`)
-      .then(() => {
-        // Apply the imported CSS file
-        // document.documentElement.setAttribute("data-theme", currentTheme);
-        console.log(`Theme loaded: ${preset}`);
-      })
-      .catch((err) =>
-        console.error(`Failed to load the theme: ${preset}`, err)
-      );
-  }, [preset]);
+  const presetClasName = `preset-${preset}`;
+  const themeClassName = currentTheme === "light" ? "light" : "dark";
 
   return (
     <ThemeContext.Provider
       value={{ theme: currentTheme, setTheme: setCurrentTheme }}
     >
-      <div className={currentTheme}>{children}</div>
+      <div className={`${presetClasName} ${themeClassName}`}>{children}</div>
     </ThemeContext.Provider>
   );
 };

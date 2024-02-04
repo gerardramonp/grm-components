@@ -40,7 +40,7 @@ const meta = {
 export default meta;
 
 const Template: StoryFn = (args) => (
-  <ThemeProvider theme="light">
+  <ThemeProvider theme="light" preset="blue">
     <Button {...args}>asdasd</Button>
   </ThemeProvider>
 );
