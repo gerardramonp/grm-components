@@ -8,6 +8,18 @@ type ThemeProviderProps = {
   preset?: ThemePreset;
 };
 
+const validThemes: Theme[] = ["light", "dark"];
+
+const isThemeValid = (theme: string): theme is Theme => {
+  return validThemes.includes(theme as Theme);
+};
+
+const validPresets: ThemePreset[] = ["default", "orange", "blue"];
+
+const isPresetValid = (preset: string): preset is ThemePreset => {
+  return validPresets.includes(preset as ThemePreset);
+};
+
 export const ThemeProvider: FC<ThemeProviderProps> = ({
   children,
   theme = "light",
@@ -15,8 +27,11 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
 }) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(theme);
 
-  const presetClasName = `preset-${preset}`;
-  const themeClassName = currentTheme === "light" ? "light" : "dark";
+  const presetClasName = isPresetValid(preset)
+    ? `preset-${preset}`
+    : "preset-default";
+
+  const themeClassName = isThemeValid(currentTheme) ? currentTheme : "light";
 
   return (
     <ThemeContext.Provider
