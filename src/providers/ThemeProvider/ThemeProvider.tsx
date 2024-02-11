@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { ThemeContext } from "./useTheme";
 import { Theme, ThemePreset } from "@/types/themeTypes";
 
@@ -26,6 +26,11 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   preset = "default",
 }) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(theme);
+
+  useEffect(() => {
+    const newValue = isThemeValid(theme) ? theme : "light";
+    setCurrentTheme(newValue);
+  }, [theme]);
 
   const presetClasName = isPresetValid(preset)
     ? `preset-${preset}`

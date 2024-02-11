@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { Button } from "./button";
-import { ThemeProvider } from "@/providers/ThemeProvider/ThemeProvider";
+
+import { getListTemplate, getTemplate } from "@/utils/storybook";
 
 const meta = {
   title: "Example/Button",
@@ -34,33 +35,29 @@ const meta = {
         disable: true,
       },
     },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 
-const Template: StoryFn = (args) => (
-  <ThemeProvider theme="light" preset="blue">
-    <Button {...args}>asdasd</Button>
-  </ThemeProvider>
-);
+const Template: StoryFn = getTemplate(Button);
 
-const ListTemplate: StoryFn = ({ items, ...args }) =>
-  items.map((item: any, index: number) => {
-    return (
-      <Button key={index} {...args} {...item}>
-        Button
-      </Button>
-    );
-  });
+const ListTemplate: StoryFn = getListTemplate(Button);
 
 export const Default: StoryFn = Template.bind({});
 Default.args = {
   variant: "default",
+  children: "content",
 };
 
 export const Destructive: StoryFn = Template.bind({});
 Destructive.args = {
+  children: "content",
   variant: "destructive",
 };
 
@@ -75,5 +72,6 @@ const variants = [
 
 export const AllVariants: StoryFn = ListTemplate.bind({});
 AllVariants.args = {
-  items: variants.map((variant) => ({ variant })),
+  items: variants.map((variant) => ({ variant, children: "ello" })),
+  children: "Button",
 };
