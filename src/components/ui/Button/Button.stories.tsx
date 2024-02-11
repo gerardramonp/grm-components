@@ -4,7 +4,7 @@ import { Button } from "./button";
 import { getListTemplate, getTemplate } from "@/utils/storybook";
 
 const meta = {
-  title: "Example/Button",
+  title: "Atoms/Button",
   component: Button,
   parameters: {
     layout: "centered",
