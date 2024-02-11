@@ -14,7 +14,7 @@ export const decorators = [
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          gap: "24px",
+          gap: "8px",
         }}
       >
         <div
@@ -85,9 +85,10 @@ export const decorators = [
               justifyContent: "center",
               alignItems: "center",
               height: "100%",
-              gap: "12px 12px",
+              gap: "12px",
               flexWrap: "wrap",
             }}
+            className="bg-background text-foreground border-border p-4 rounded-md"
           >
             <Story />
           </div>
